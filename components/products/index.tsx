@@ -50,7 +50,7 @@ const ProductsGallery: FC = () => {
                         </div>
                     </div>
                 </nav>
-                <div className="grid grid-cols-[1fr,_1fr,_1fr,_1fr] gap-5">
+                <div className="grid grid:grid-cols-[1fr,_1fr] md:grid-cols-[1fr,_1fr,_1fr] lg:grid-cols-[1fr,_1fr,_1fr,_1fr] gap-5">
                     {isError && <div>{error!.message}</div>}
                     {isSuccess &&
                         data?.map((productData) => {
