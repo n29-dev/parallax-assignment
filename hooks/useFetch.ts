@@ -2,6 +2,7 @@ import { AxiosRequestConfig } from "axios";
 import requestApi from "network/requestApi";
 import { useState, useEffect } from "react";
 import { ApiErrorType } from "network/requestApi";
+import { useProductContext } from "context/productContext";
 
 type FetchResponseType<T> = {
     data: T | null;
@@ -18,10 +19,13 @@ const useFetch = <T = any>(config: AxiosRequestConfig<T>): FetchResponseType<T> 
     const [isSuccess, setIsSuccess] = useState(false);
     const [isError, setIsError] = useState(false);
     const [error, setError] = useState<ApiErrorType | null>(null);
+    const { loading: globalLoading } = useProductContext();
+    globalLoading;
 
     const refetch = async () => {
         // set islaoding to true
         setLoading(true);
+        globalLoading?.set(true);
         // set data and succes on succes
         try {
             const result = await requestApi<T>(config);
@@ -37,6 +41,7 @@ const useFetch = <T = any>(config: AxiosRequestConfig<T>): FetchResponseType<T> 
         }
 
         setLoading(false);
+        globalLoading?.set(false);
     };
 
     useEffect(() => {

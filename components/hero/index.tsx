@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { CarouselItemData } from "components/carousel";
 import CarouselContainer from "components/carousel";
-import CarouselImg1 from 'public/carousel-1.jpg'
-import CarouselImg2 from 'public/carousel-2.jpg'
-import CarouselImg3 from 'public/carousel-3.jpg'
+import CarouselImg1 from "public/carousel-1.jpg";
+import CarouselImg2 from "public/carousel-2.jpg";
+import CarouselImg3 from "public/carousel-3.jpg";
 
 const carouselData: CarouselItemData[] = [
     { image: CarouselImg1, title: "Stripy Zig Zag Jigsaw Pillow and Duvet Set", id: 1 },
@@ -12,7 +12,11 @@ const carouselData: CarouselItemData[] = [
 ];
 
 const Hero: FC = () => {
-    return <CarouselContainer carouselData={carouselData} />;
+    return (
+        <section>
+            <CarouselContainer carouselData={carouselData} />
+        </section>
+    );
 };
 
 export default Hero;

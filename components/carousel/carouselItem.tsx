@@ -19,7 +19,7 @@ const CarouselItem: FC<CarouselItemProps> = ({ image, title, id, prev, next, che
                 name="carousel"
                 aria-hidden="true"
                 hidden
-                checked={checked}
+                defaultChecked={checked}
             />
             <div className="carousel-item absolute opacity-0" style={{ height: "50vh" }}>
                 <div className="h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center relative">
