@@ -1,6 +1,6 @@
 import { ProductType } from "types/common";
 
-const searchProducByName = (input: string, products: ProductType[]) => {
+const searchProducByName = (input: string = '', products: ProductType[]) => {
     const words = input.split(" ").filter((word) => word.length > 0);
     const matchingProducts = products
         .filter((product) => words.some((word) => product.title.toLowerCase().includes(word.toLowerCase())))
