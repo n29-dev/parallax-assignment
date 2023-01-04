@@ -39,8 +39,8 @@ const ProductDetail: FC<ProductDetailProps> = ({ productData }) => {
                                     <svg
                                         fill="currentColor"
                                         strokeLinecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
                                         className="w-5 h-5"
                                         viewBox="0 0 24 24"
                                     >
@@ -51,8 +51,8 @@ const ProductDetail: FC<ProductDetailProps> = ({ productData }) => {
                                     <svg
                                         fill="currentColor"
                                         strokeLinecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
                                         className="w-5 h-5"
                                         viewBox="0 0 24 24"
                                     >
@@ -63,8 +63,8 @@ const ProductDetail: FC<ProductDetailProps> = ({ productData }) => {
                                     <svg
                                         fill="currentColor"
                                         strokeLinecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
                                         className="w-5 h-5"
                                         viewBox="0 0 24 24"
                                     >

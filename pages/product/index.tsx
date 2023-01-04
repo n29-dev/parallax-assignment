@@ -6,20 +6,19 @@ import { ProductType } from "types/common";
 import { GetStaticProps } from "next";
 import requestApi from "network/requestApi";
 
-interface HomePageProps {
+interface ProductsPageProps {
     products: ProductType[];
 }
 
-export default function HomePage({ products }: HomePageProps) {
+export default function ProductsPage({ products }: ProductsPageProps) {
     return (
         <>
             <Head>
-                <title>Parallax Logic</title>
+                <title>Products</title>
                 <meta name="description" content="Assignment Project" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
             <Layout>
-                <Hero />
                 <ProductGallery products={products} />
             </Layout>
         </>
@@ -38,6 +37,5 @@ export const getStaticProps: GetStaticProps = async () => {
         props: {
             products: data,
         },
-        revalidate: 10,
     };
 };

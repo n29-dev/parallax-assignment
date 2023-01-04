@@ -1,17 +1,22 @@
 import Head from "next/head";
 import Layout from "components/layout";
 import SearchResults from "components/search";
-import { useProductContext } from "context/productContext";
 import searchProducByName from "lib/searchProductByName";
 import { useRouter } from "next/router";
+import { ProductType } from "types/common";
+import { GetStaticProps } from "next";
+import requestApi from "network/requestApi";
 
-export default function SearchResultPage() {
-    const { products } = useProductContext();
+interface SearchSearchResultPageProps {
+    products: ProductType[];
+}
+
+export default function SearchResultPage({ products }: SearchSearchResultPageProps) {
     const router = useRouter();
     const { productName } = router.query;
     const searchString = productName as string;
 
-    const filteredProducts = searchProducByName(searchString, products!.value);
+    const filteredProducts = searchProducByName(searchString, products);
 
     return (
         <>
@@ -26,3 +31,19 @@ export default function SearchResultPage() {
         </>
     );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+    const result = await requestApi<ProductType[]>({ url: "/products", method: "get" });
+    let data = result.data;
+
+    if (data === undefined) {
+        data = [];
+    }
+
+    return {
+        props: {
+            products: data,
+        },
+        revalidate: 10,
+    };
+};

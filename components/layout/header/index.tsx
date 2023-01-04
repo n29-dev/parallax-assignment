@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faUser, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 const navigatinLinks = [
-    { link: "#", label: "Shop" },
-    { link: "#", label: "About" },
-    { link: "#", label: "Products" },
+    { link: "/", label: "Shop" },
+    { link: "/products", label: "About" },
+    { link: "/products", label: "Products" },
 ];
 
 const Header: FC = () => {

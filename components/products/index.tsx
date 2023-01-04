@@ -1,28 +1,16 @@
-import { FC, useEffect, useState } from "react";
-import useFetch from "hooks/useFetch";
-import { ProductType } from "types/common";
+import { FC, useState } from "react";
 import Product from "./product";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { useProductContext } from "context/productContext";
 import Modal from "components/common/modal";
 import SearchBar from "components/common/searchbar";
+import { ProductType } from "types/common";
 
-const ProductsGallery: FC = () => {
-    const { data, isError, isSuccess, error } = useFetch<ProductType[]>({
-        url: "/products ",
-        method: "get",
-    });
+interface ProductGalleryProps {
+    products: ProductType[];
+}
 
-    const { products } = useProductContext();
-
-    useEffect(() => {
-        if (isSuccess) {
-            products?.set(data!);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [data]);
-
+const ProductsGallery: FC<ProductGalleryProps> = ({ products }) => {
     // search modal state
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -51,9 +39,8 @@ const ProductsGallery: FC = () => {
                     </div>
                 </nav>
                 <div className="grid grid:grid-cols-[1fr,_1fr] md:grid-cols-[1fr,_1fr,_1fr] lg:grid-cols-[1fr,_1fr,_1fr,_1fr] gap-5">
-                    {isError && <div>{error!.message}</div>}
-                    {isSuccess &&
-                        data?.map((productData) => {
+                    {products?.length > 0 &&
+                        products?.map((productData) => {
                             return <Product productData={productData} key={productData.id} />;
                         })}
                 </div>

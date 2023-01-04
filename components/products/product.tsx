@@ -13,8 +13,14 @@ const Product: FC<ProductProps> = ({ productData }) => {
     const { image, title, price, id } = productData;
     return (
         <div className="w-full p-6 flex flex-col">
-            <Link href={`/${id}`} className="block">
-                <Image className="hover:grow hover:shadow-lg object-cover w-[300px] h-[300px]" src={image} width={300} height={300} alt={title} />
+            <Link href={`/product/${id}`} className="block">
+                <Image
+                    className="hover:grow hover:shadow-lg object-cover w-[300px] h-[300px]"
+                    src={image}
+                    width={300}
+                    height={300}
+                    alt={title}
+                />
                 <div className="pt-3 flex items-center justify-between">
                     <p className="">{title}</p>
                     <FontAwesomeIcon icon={faHeart} />
