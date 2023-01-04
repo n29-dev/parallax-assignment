@@ -2,43 +2,53 @@ import { FC } from "react";
 import NavLink from "./navLink";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faUser, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 const navigatinLinks = [
-    { link: "#", label: "Home" },
+    { link: "#", label: "Shop" },
     { link: "#", label: "About" },
-    { link: "#", label: "Services" },
-    { link: "#", label: "Pricing" },
-    { link: "#", label: "Contact" },
+    { link: "#", label: "Products" },
 ];
 
 const Header: FC = () => {
     return (
-        <header>
-            <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded">
-                <div className="container flex flex-wrap items-center justify-between mx-auto">
-                    <Link href="/" className="flex items-center">
-                        <span className="self-center text-xl font-semibold whitespace-nowrap">
-                            Parallax
-                        </span>
-                    </Link>
-                    <button
-                        type="button"
-                        className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-                    >
-                        <span className="sr-only">Open main menu</span>
-                        <FontAwesomeIcon icon={faBars} />
-                    </button>
-                    <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-                        <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
-                            {navigatinLinks.map(({ label, link }, index) => {
-                                return <NavLink label={label} link={link} key={Math.random() + index} />;
+        <nav id="header" className="w-full z-30 top-0 py-1">
+            <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
+                <label htmlFor="menu-toggle" className="cursor-pointer md:hidden block">
+                    <FontAwesomeIcon icon={faBars} />
+                </label>
+                <input className="hidden" type="checkbox" id="menu-toggle" />
+
+                <div className="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
+                    <nav>
+                        <ul className="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
+                            {navigatinLinks.map(({ link, label }) => {
+                                return <NavLink link={link} label={label} key={Math.random()} />;
                             })}
                         </ul>
-                    </div>
+                    </nav>
                 </div>
-            </nav>
-        </header>
+
+                <div className="order-1 md:order-2">
+                    <Link
+                        className="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl "
+                        href="/"
+                    >
+                        Parallax
+                    </Link>
+                </div>
+
+                <div className="order-2 md:order-3 flex items-center" id="nav-content">
+                    <a className="inline-block no-underline hover:text-black" href="#">
+                        <FontAwesomeIcon className="h-5" icon={faUser} />
+                    </a>
+
+                    <a className="pl-10 inline-block no-underline hover:text-black" href="#">
+                        <FontAwesomeIcon className="h-5" icon={faCartShopping} />
+                    </a>
+                </div>
+            </div>
+        </nav>
     );
 };
 

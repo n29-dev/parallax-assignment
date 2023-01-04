@@ -9,10 +9,7 @@ interface NavLinkProps {
 const NavLink: FC<NavLinkProps> = ({ link, label }) => {
     return (
         <li>
-            <Link
-                href={link}
-                className="block py-2 pl-3 pr-4 bg-blue-700 rounded md:bg-transparent md:p-0"
-            >
+            <Link className="inline-block no-underline hover:text-black hover:underline py-2 px-4" href={link}>
                 {label}
             </Link>
         </li>
