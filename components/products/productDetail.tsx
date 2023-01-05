@@ -1,4 +1,4 @@
-import { FC, useDebugValue } from "react";
+import { FC } from "react";
 import Image from "next/image";
 import { ProductType } from "types/common";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

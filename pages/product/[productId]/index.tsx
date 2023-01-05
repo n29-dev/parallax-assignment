@@ -15,6 +15,7 @@ export default function ProductDetailPage({ products }: ProductDetailPageProps) 
     const router = useRouter();
     const { productId } = router.query;
     const id = Number(productId as string);
+    console.log(products);
     let productData = products.find((product) => product.id === id);
 
     if (productData === undefined) {
@@ -52,7 +53,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     return {
         paths,
-        fallback: true,
+        fallback: false,
     };
 };
 
